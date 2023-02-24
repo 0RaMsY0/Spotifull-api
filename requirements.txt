@@ -1,2 +1,5 @@
 git+https://github.com/rgryta/pytube.git@main
+pytube
+uvicorn
+spotipy
 deta
