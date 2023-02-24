@@ -1,5 +1,5 @@
-git+https://github.com/rgryta/pytube.git@main
-pytube
+fastapi
 uvicorn
+pytube
 spotipy
-deta
+
