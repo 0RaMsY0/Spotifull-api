@@ -1,8 +1,13 @@
 {
-  "builds": [
-    {"src": "main.py", "use": "@now/python"}
+	"builds": [
+    { 
+      "src": "main.py", 
+      "use": "@vercel/python"
+    }
   ],
-  "routes": [
-    {"src": "/(.*)", "dest": "main.py"}
-  ]
+	"routes": [
+		{ "src": "/", "dest": "main.py" },
+		{ "src": "/api/v1", "dest": "main.py" },
+		{ "src": "/api/v1/get_playlist", "dest": "main.py" }
+	]
 }
