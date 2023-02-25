@@ -1,7 +1,7 @@
 import random
 
 
-def ran_user_agent() -> str:
+def ran_user_agent():
     """
         Returns a random user-agent
     """

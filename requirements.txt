@@ -1,5 +1,4 @@
 fastapi
 uvicorn
-pytube
+git+https://github.com/rgryta/pytube.git@main
 spotipy
-

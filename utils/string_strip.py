@@ -1,6 +1,6 @@
 import re
 
-def string_strip(text: str) -> str:
+def string_strip(text: str):
     """
         Clean text from colors and other
         ANSI escape sequences.

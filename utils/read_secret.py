@@ -1,6 +1,6 @@
 import json
 
-def spotify_secret() -> dict:
+def spotify_secret():
     """
         Returns a dict of spotify secret
         id, secret etc...
@@ -11,7 +11,7 @@ def spotify_secret() -> dict:
 
     return data
 
-def deta_secret() -> dict:
+def deta_secret():
     """
         Return a dict that contains
         secret of deta. like the 

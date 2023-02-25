@@ -1,16 +1,15 @@
 import os
 import spotipy
-from spotipy import SpotifyClientCredentials
 import subprocess
-from pytube import Search, Youtube
+from spotipy import SpotifyClientCredentials
+from pytube import Search, YouTube
 from models.music_model import Music
-from src.upload_music import upload_music
 from utils.string_strip import string_strip
 from utils.user_agent import ran_user_agent
 from utils.random_id import random_id
 from utils.read_secret import *
 
-def search_music(music_name: str) -> YouTube:
+def search_music(music_name: str):
     """
         Search for the music name 
         in youtube and returns it 
@@ -22,25 +21,25 @@ def search_music(music_name: str) -> YouTube:
     return results
 
 
-def fetch_playlist_music_url(playlist_url: str, session_id: str | None=None) -> dict:
+def fetch_playlist_music_url(playlist_url: str, session_id: str):
     """
         Returns a dict contains info about tracks
         in a playlist.
     """
     if "?si" in playlist_url:
         playlist_url = playlist_url.split("?si")[0]
-    
-    # os.system(f"mkdir data/{session_id}")
 
+    cache_handler = spotipy.CacheFileHandler(cache_path="conf/spotify-access-token")
+    
     spotify = spotipy.Spotify(auth_manager=SpotifyClientCredentials(
         client_id=spotify_secret()["client-id"],
         client_secret=spotify_secret()["client-secret"],
+        cache_handler=cache_handler
         ),
     )
+    
     playlist = spotify.playlist(playlist_url)
     playlist_tracks = playlist["tracks"]
-
-    print(session_id)
 
     MUSICS_INFO = []
     for track in playlist_tracks["items"]:
