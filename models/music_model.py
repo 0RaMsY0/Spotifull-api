@@ -10,6 +10,7 @@ class Music(object):
         self.publish_date = ""
         self.cover_image = ""
         self.artist_name = ""
+        self.preview_url = ""
         self.download_url = ""
 
     def to_json(self) -> dict:
@@ -23,5 +24,6 @@ class Music(object):
             "publish_date": self.publish_date,
             "artist_name": self.artist_name,
             "cover_image": self.cover_image,
+            "preview_url": self.preview_url,
             "download_url": self.download_url,
         }

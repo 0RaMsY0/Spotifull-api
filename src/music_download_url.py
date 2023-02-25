@@ -51,6 +51,7 @@ def fetch_playlist_music_url(playlist_url: str, session_id: str):
         _Music.spotify_url = track['track']['external_urls']['spotify']
         _Music.artist_name = track["track"]["album"]["name"]
         _Music.cover_image = track["track"]["album"]["images"][0]["url"]
+        _Music.preview_url = track["track"]["preview_url"]
         _Music.download_url = f"https://youtu.be/{search_music(f'{_Music.artist_name} - {_Music.name} (Official Audio)')[0].video_id}"
 
         MUSICS_INFO.append(_Music.to_json())
