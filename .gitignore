@@ -1,1 +1,10 @@
-.vercel
+
+# Ignore python garbage collection
+__pycache__
+*.pyc
+
+# Ignore my conf
+
+conf/api-conf.json
+conf/spotify-access-token
+conf/spotify-secret.json
