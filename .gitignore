@@ -4,7 +4,6 @@ __pycache__
 *.pyc
 
 # Ignore conf
-conf/api-conf.json
 conf/spotify-access-token
 conf/spotify-secret.json
 
