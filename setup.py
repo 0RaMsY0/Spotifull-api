@@ -66,7 +66,6 @@ def run(args) -> None:
     elif SETUP_DEPS:
         setup_deps()
 
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
@@ -77,3 +76,4 @@ if __name__ == "__main__":
     arguments = parser.parse_args()
 
     run(arguments)
+
