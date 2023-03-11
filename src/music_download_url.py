@@ -1,8 +1,11 @@
 import os
+import time
+import pytube
 import spotipy
 import subprocess
-from spotipy import SpotifyClientCredentials
 from pytube import Search, YouTube
+from spotipy import SpotifyClientCredentials
+
 from models.music_model import Music
 from utils.string_strip import string_strip
 from utils.user_agent import ran_user_agent
@@ -20,25 +23,15 @@ def search_music(music_name: str):
 
     return results
 
-
-def fetch_playlist_music_url(playlist_url: str, session_id: str):
+def fetch_playlist_music_url(playlist_url: str, session_id: str, spotify_session: spotipy.Spotify, is_download: bool):
     """
         Returns a dict contains info about tracks
         in a playlist.
     """
     if "?si" in playlist_url:
         playlist_url = playlist_url.split("?si")[0]
-
-    cache_handler = spotipy.CacheFileHandler(cache_path="conf/spotify-access-token")
     
-    spotify = spotipy.Spotify(auth_manager=SpotifyClientCredentials(
-        client_id=spotify_secret()["client-id"],
-        client_secret=spotify_secret()["client-secret"],
-        cache_handler=cache_handler
-        ),
-    )
-    
-    playlist = spotify.playlist(playlist_url)
+    playlist = spotify_session.playlist(playlist_url)
     playlist_tracks = playlist["tracks"]
 
     MUSICS_INFO = []
@@ -52,8 +45,31 @@ def fetch_playlist_music_url(playlist_url: str, session_id: str):
         _Music.artist_name = track["track"]["album"]["name"]
         _Music.cover_image = track["track"]["album"]["images"][0]["url"]
         _Music.preview_url = track["track"]["preview_url"]
-        _Music.download_url = f"https://youtu.be/{search_music(f'{_Music.artist_name} - {_Music.name} (Official Audio)')[0].video_id}"
+        _Music.youtube_url = f"https://youtu.be/{search_music(f'{_Music.artist_name} - {_Music.name} (Official Audio)')[0].video_id}"
+        if is_download:
+            _Music.download_url = download_music(_Music.youtube_url, session_id)
+        pass
 
         MUSICS_INFO.append(_Music.to_json())
 
     return MUSICS_INFO
+
+def download_music(youtube_url: Music, session_id: str) -> str:
+    """
+        Download wanted music list with given urls
+    """
+    max_retries = 7
+    delay = 3
+    local_music_path = None
+
+    youtube = YouTube(youtube_url)
+
+    for i in range(max_retries):
+        try:
+            youtube.streams.get_audio_only().download(output_path=f"data/{session_id}", filename=f"{youtube.title.replace(' ', '_')}.mp3")
+            local_music_path = f"/v1/api/get_music?music_name={youtube.title.replace(' ','_')}.mp3&session_id={session_id}"
+            break
+        except Exception:
+            time.sleep(delay)
+
+    return local_music_path
