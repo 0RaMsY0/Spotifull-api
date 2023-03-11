@@ -11,7 +11,8 @@ class Music(object):
         self.cover_image = ""
         self.artist_name = ""
         self.preview_url = ""
-        self.download_url = ""
+        self.youtube_url = ""
+        self.download_url = None
 
     def to_json(self) -> dict:
         """
@@ -25,5 +26,6 @@ class Music(object):
             "artist_name": self.artist_name,
             "cover_image": self.cover_image,
             "preview_url": self.preview_url,
-            "download_url": self.download_url,
+            "youtube_url": self.youtube_url,
+            "download_url": self.download_url
         }
