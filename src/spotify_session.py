@@ -19,3 +19,4 @@ def spotify_session() -> spotipy.Spotify:
     )
 
     return spotify
+

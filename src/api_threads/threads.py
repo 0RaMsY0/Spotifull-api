@@ -1,37 +1,30 @@
-import os
 import threading
 
-from utils.date import hour
-from .session_expire_thread import track_sessions
+from .session_expire_thread import TrackSessions
 
 class ThreadsManager (object):
     """
         Manage all the API threads
     """
     global THREADS, RUNNING_THREADS, EVENT
-    
     THREADS = [
-        track_sessions,
+        TrackSessions(),
     ]
     RUNNING_THREADS = []
-    EVENT = threading.Event()
 
     def __init__(self) -> None:
         pass
 
-    def init_threads() -> None:
+    def init_threads(self) -> None:
         """
-            Starts all the threads when initialasing
-            the programe
+            Starts all the threads
         """
-
         for thread in THREADS:
-            _thread = threading.Thread(target=thread, args=(EVENT,))
-            RUNNING_THREADS.append(_thread)
-            _thread.start()
+            thread.start()
 
-    def stop_threads() -> None:
+    def stop_threads(self) -> None:
         """
             Stoping all the threads
         """
-        EVENT.set()
+        for thread in THREADS:
+            thread.stop()

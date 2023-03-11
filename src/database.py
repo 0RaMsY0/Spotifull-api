@@ -41,3 +41,4 @@ class Database(object):
         sql = "DELETE FROM sessions WHERE session_id = '%s'" % session_id
         CURSOR.execute(sql)
         CONNECTION.commit()
+

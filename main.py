@@ -1,21 +1,41 @@
 import os
 import uvicorn
 from fastapi import FastAPI
+from contextlib import asynccontextmanager
 from starlette.responses import RedirectResponse, StreamingResponse
 
 from src.music_download_url import fetch_playlist_music_url
 from src.spotify_session import spotify_session
 from src.api_threads.threads import ThreadsManager
+from src.api_threads.session_expire_thread import TrackSessions
 from src.database import Database
 from utils.random_id import random_id
 from utils.read_api_config import read_api_config
-
-app = FastAPI()
 
 # Consts
 SPOTIFY_SESSION = spotify_session()
 DATABASE = Database()
 THREADS_MANAGER = ThreadsManager()
+
+app = FastAPI()
+
+@app.on_event("startup")
+async def startup_event() -> None:
+    """
+        Handle on startup events
+        in this case starting 
+        all the needed threads
+        and stoping them when the 
+        application shutdown
+    """
+    THREADS_MANAGER.init_threads()
+
+@app.on_event("shutdown")
+def shutown_event() -> None:
+    """
+        Stop all the alive threads
+    """
+    THREADS_MANAGER.stop_threads()
 
 @app.get("/")
 def route():
@@ -62,4 +82,4 @@ def get_music(music_name: str, session_id: str):
         }
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=9067, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=7867, reload=True)

@@ -1,15 +1,9 @@
 import os
 import time
-import pytube
 import spotipy
-import subprocess
 from pytube import Search, YouTube
-from spotipy import SpotifyClientCredentials
 
 from models.music_model import Music
-from utils.string_strip import string_strip
-from utils.user_agent import ran_user_agent
-from utils.random_id import random_id
 from utils.read_secret import *
 
 def search_music(music_name: str):
@@ -64,12 +58,13 @@ def download_music(youtube_url: Music, session_id: str) -> str:
 
     youtube = YouTube(youtube_url)
 
-    for i in range(max_retries):
+    for _ in range(max_retries):
         try:
             youtube.streams.get_audio_only().download(output_path=f"data/{session_id}", filename=f"{youtube.title.replace(' ', '_')}.mp3")
-            local_music_path = f"/v1/api/get_music?music_name={youtube.title.replace(' ','_')}.mp3&session_id={session_id}"
+            local_music_path = f"/api/v1/get_music?music_name={youtube.title.replace(' ','_')}.mp3&session_id={session_id}"
             break
         except Exception:
             time.sleep(delay)
 
     return local_music_path
+
