@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/0RaMsY0/Spotifull-api/blob/main/assets/images/spotifull_logo.png?raw=true" alt="ReadLax">
+  <img src="https://github.com/0RaMsY0/Spotifull-api/blob/main/assets/images/spotifull_logo.png?raw=true" alt="Spotifull-api", width=300>
 </p>
 
 <div align="center">
