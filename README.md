@@ -64,7 +64,7 @@ Now you can navigate to http://localhost:9898/api/v1 and you should get somethin
 now go and get a playlist url in this case i will use [this one](https://open.spotify.com/playlist/7xmz5rpR2bSstByjr3vDId?si=6f910808f056436e), let send a GET requests to fetch the metadata for this playlist:
 * using Curl:
     ```bash
-    curl -X "http:/localhost:9898/api/v1/get_playlist?playlist_url=https://open.spotify.com/playlist/7xmz5rpR2bSstByjr3vDId?si=6f910808f056436e"
+    curl -X "GET" "http:/localhost:9898/api/v1/get_playlist?playlist_url=https://open.spotify.com/playlist/7xmz5rpR2bSstByjr3vDId?si=6f910808f056436e"
     ```
 By default Spotifull-api will only fetch the metadata and return it like so:
 ```json
