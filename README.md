@@ -132,3 +132,10 @@ Notice that "download_url" is not ```null``` and we actually get the url path to
 | /api/v1/get_playlist | fetch a spotify playlist data | music_name |
 | /api/v1/get_music | get a music that is already installed when calling ```/api/v1/get_playlist``` | music_name<br>session_id|
 
+# Contributors ✨
+Thanks go to these wonderful people
+> **_NOTE_**: there are'nt any contributors at this time but if you want to contribute you can, just look at issues and select one that you are capable of solving, or you can work on adding a feature.
+
+# Feedback
+
+I greatly appreciate any feedback you have on our project. you can either create an issue with yout feedback on something you want me to improve/add/fix or you can open a discution for it.
