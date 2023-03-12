@@ -118,6 +118,15 @@ Now if we try to do a GET request again we will get:
 Notice that "download_url" is not ```null``` and we actually get the url path to the current music in the playlist, we can use somthing like **mpv** to play it or **python** to download it.
 > **_NOTE:_** "download_url" may sometimes be ```null`` so you may need to check for that if you are planning on writing a script to automate the installation process.
 
+You can use the pre-writen [spotifull-cli.py](https://github.com/0RaMsY0/Spotifull-api/blob/main/spotifull-cli.py) to download your playlist. First you will need to have hosted the Spotifull-api (you may host it on a server or localy) then you need to change ```API``` variable inside of [spotifull-cli.py](https://github.com/0RaMsY0/Spotifull-api/blob/main/spotifull-cli.py) to your own url e.g ```http://0.0.0.0:9898```, then you can run:
+``` bash
+python spotifull-cli download <playlist_url> <path_to_save_music_to>
+```
+spotifull-cli.py is indepandent that means if you are on linux you can make it a command, like so:
+```bash
+chmod 777 spotifull-cli.py
+sudo mv spotifull-cli /usr/bin/spotifull-cli
+```
 
 # Upcoming features
 
