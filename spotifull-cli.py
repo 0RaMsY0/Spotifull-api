@@ -69,7 +69,7 @@ def check_api() -> bool:
     try:
         requests.get(API)
         return True
-    except requests.exceptions.InvalidURL:
+    except:
         return False
 
 def fetch_playlist_metadata(playlist_url: str) -> json:
