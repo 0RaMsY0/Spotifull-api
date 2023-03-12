@@ -1,4 +1,4 @@
-[spotifull-logo](https://raw.githubusercontent.com/0RaMsY0/Spotifull-api/main/assets/images/spotifull_logo.png?token=GHSAT0AAAAAAB7R3BLXGLUJ7JCZ7F53EEDOZANCQTQ)
+[spotifull-logo](https://github.com/0RaMsY0/Spotifull-api/blob/main/assets/images/spotifull_logo.png?raw=true)
 
 <div align="center">
    
