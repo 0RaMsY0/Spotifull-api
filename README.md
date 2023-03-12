@@ -134,7 +134,7 @@ Notice that "download_url" is not ```null``` and we actually get the url path to
 
 # Contributors ✨
 Thanks go to these wonderful people
-> **_NOTE_**: there are'nt any contributors at this time but if you want to contribute you can, just look at issues and select one that you are capable of solving, or you can work on adding a feature.
+> **_NOTE_**: there aren't any contributors at this time but if you want to contribute you can, just look at issues and select one that you are capable of solving, or you can work on adding a feature.
 
 # Feedback
 
