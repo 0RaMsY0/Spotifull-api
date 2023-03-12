@@ -1,4 +1,6 @@
-[spotifull-logo](https://github.com/0RaMsY0/Spotifull-api/blob/main/assets/images/spotifull_logo.png?raw=true)
+<p align="center">
+  <img src="https://github.com/0RaMsY0/Spotifull-api/blob/main/assets/images/spotifull_logo.png?raw=true" alt="ReadLax">
+</p>
 
 <div align="center">
    
