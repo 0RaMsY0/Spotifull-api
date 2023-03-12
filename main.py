@@ -39,7 +39,6 @@ def shutown_event() -> None:
 
 @app.get("/")
 def route():
-    print(DATABASE.get_sessions())
     return RedirectResponse("/api/v1")
 
 @app.get("/api/v1", status_code=200)
