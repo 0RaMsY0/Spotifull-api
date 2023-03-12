@@ -10,3 +10,6 @@ conf/api-conf.json
 
 # Ignore installed playlists
 data/*
+
+# Ignore database changes
+database/database.db
