@@ -82,6 +82,7 @@ By default Spotifull-api will only fetch the metadata and return it like so:
       "youtube_url": "https://youtu.be/Z8IhZMJ3epU",
       "download_url": null
     },
+  ]
 }
 
 ```
@@ -111,6 +112,7 @@ Now if we try to do a GET request again we will get:
       "youtube_url": "https://youtu.be/NalbryU_EK0",
       "download_url": "/api/v1/get_music?music_name=T.I._-_Jefe_ft._Meek_Mill.mp3&session_id=OtPwndQNSo"
     },
+  ]
 }
 ```
 Notice that "download_url" is not ```null``` and we actually get the url path to the current music in the playlist, we can use somthing like **mpv** to play it or **python** to download it.
