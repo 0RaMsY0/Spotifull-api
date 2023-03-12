@@ -1,4 +1,3 @@
-
 # Ignore python garbage collection
 __pycache__
 *.pyc
@@ -13,3 +12,6 @@ data/*
 
 # Ignore database changes
 database/database.db
+
+# Ignore media
+*.mp3
