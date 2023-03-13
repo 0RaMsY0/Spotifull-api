@@ -129,7 +129,9 @@ sudo mv spotifull-cli /usr/bin/spotifull-cli
 ```
 # CLI preview
 
-[spotifull-cli](https://github.com/0RaMsY0/Spotifull-api/blob/main/assets/images/cli-test.png?raw=true)
+<p align="center">
+  <img src="https://github.com/0RaMsY0/Spotifull-api/blob/main/assets/images/cli-test.png?raw=true" alt="Spotifull-cli", width=500>
+</p>
 
 # Upcoming features
 
