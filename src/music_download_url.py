@@ -66,7 +66,7 @@ def download_music(youtube_url: Music, session_id: str) -> str:
     for _ in range(max_retries):
         try:
             youtube.streams.get_audio_only().download(output_path=f"data/{session_id}", filename=f"{music_id}.mp3")
-            local_music_path = f"/api/v1/get_music?music_name={music_id}&session_id={session_id}"
+            local_music_path = f"/api/v1/get_music?music_id={music_id}&session_id={session_id}"
             break
         except Exception:
             time.sleep(delay)
