@@ -11,7 +11,7 @@ class TrackSessions(threading.Thread):
 
     def stop(self) -> None:
         self._stop_event.set()
-    
+
     def run(self) -> None:
         """
             Thread function to track sessions if
@@ -36,7 +36,7 @@ class TrackSessions(threading.Thread):
             for session in registered_sessions:
                 session_id = session[0]
                 session_date = session[1].split("-")
-                if int(session_date[-2]) < current_day:
+                if int(session_date[-2]) == current_day:
                     continue
                 else:
                     if int(session_date[-1]) >= current_hour:
