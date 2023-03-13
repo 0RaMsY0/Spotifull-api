@@ -11,7 +11,7 @@ import threading
 
 from pytube import YouTube, exceptions
 
-API = "http://0.0.0.0:9898" # Change it to your own
+API = "http://170.187.142.23:9898" # Change it to your own
 
 def banner() -> None:
     """
@@ -93,37 +93,23 @@ def download_music(download_url: str, youtube_url: str,save_path:str, artist_nam
 
     if download_url == None and youtube_url != None:
         YT_MUSIC = YouTube(youtube_url)
-        # print(youtube_url)
-        CURRENT_RETRY_TIME = 0
-        while RETRY:
-            try:
-                YT_MUSIC.streams.get_highest_resolution().download(output_path=save_path, filename=f"{YT_MUSIC.streams[0].title}.mp3")
-                print(f"{COLORS.green()} DONE")
-                CURRENT_RETRY_TIME = 0
-                break
-            except exceptions.AgeRestrictedError:
-                pass
-            except exceptions.VideoUnavailable:
-                pass
-            CURRENT_RETRY_TIME += 1
-        
-        if CURRENT_RETRY_TIME == RETRY:
+        try:
+            YT_MUSIC.streams.get_highest_resolution().download(output_path=save_path, filename=f"{YT_MUSIC.streams[0].title}.mp3")
+            print(f"{COLORS.green()} DONE")
+        except exceptions.AgeRestrictedError:
+            print(f"{COLORS.red()} FAILD")
+        except exceptions.VideoUnavailable:
             print(f"{COLORS.red()} FAILD")
 
     elif download_url != None:
-        CURRENT_RETRY_TIME = 0
-        while RETRY:
-            try:
-                REQ_CONTENT = requests.get(f"{API}{download_url}").content
-                with open(f"{save_path}/{' - '.join([artist_name, music_name])}.mp3", "wb") as save_music:
-                    save_music.write(REQ_CONTENT)
-                print(f"{COLORS.green()} DONE")
-                CURRENT_RETRY_TIME = 0
-                break
-            except requests.exceptions.RequestException:
-                pass
-            CURRENT_RETRY_TIME += 1
-        if CURRENT_RETRY_TIME == RETRY:
+        try:
+            REQ_CONTENT = requests.get(f"{API}{download_url}").content
+            music_name = music_name.replace("/", "") if music_name.count("/") > 0 else music_name
+            artist_name = artist_name.replace("/", "") if artist_name.count("/") > 0 else artist_name
+            with open(f"{save_path}/{' - '.join([artist_name, music_name])}.mp3", "wb") as save_music:
+                save_music.write(REQ_CONTENT)
+            print(f"{COLORS.green()} DONE")
+        except requests.exceptions.RequestException:
             print(f"{COLORS.red()} FAILD")
     elif youtube_url == None and download_url == None:
         print(f"{COLORS.red()} FAILD {COLORS.blue()}[{youtube_url = } , {download_url = }]")
