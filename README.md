@@ -110,7 +110,7 @@ Now if we try to do a GET request again we will get:
       "cover_image": "https://i.scdn.co/image/ab67616d0000b2731ea261daa852a6c5c465dff3",
       "preview_url": "https://p.scdn.co/mp3-preview/09e921aebcfffbaecdc9a2b17263a2b5d03fc3ed?cid=9eb1d0fd5b6f4b1d9a99da39da3879e6",
       "youtube_url": "https://youtu.be/NalbryU_EK0",
-      "download_url": "/api/v1/get_music?music_name=T.I._-_Jefe_ft._Meek_Mill.mp3&session_id=OtPwndQNSo"
+      "download_url": "/api/v1/get_music?music_id=sZiSEOFUHzbkxuALLQNr&session_id=OtPwndQNSo"
     },
   ]
 }
@@ -145,8 +145,8 @@ sudo mv spotifull-cli /usr/bin/spotifull-cli
 |---------|---------------|---------|
 |  /      | redirect to /api/v1 | None |
 | /api/v1 | home route for the api | None |
-| /api/v1/get_playlist | fetch a spotify playlist data | music_name |
-| /api/v1/get_music | get a music that is already installed when calling ```/api/v1/get_playlist``` | music_name<br>session_id|
+| /api/v1/get_playlist | fetch a spotify playlist data | music_id |
+| /api/v1/get_music | get a music that is already installed when calling ```/api/v1/get_playlist``` | music_id<br>session_id|
 
 # Contributors ✨
 Thanks go to these wonderful people
