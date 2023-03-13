@@ -11,7 +11,7 @@ import threading
 
 from pytube import YouTube, exceptions
 
-API = "http://170.187.142.23:9898" # Change it to your own
+API = "http://0.0.0.0:9898" # Change it to your own
 
 def banner() -> None:
     """
