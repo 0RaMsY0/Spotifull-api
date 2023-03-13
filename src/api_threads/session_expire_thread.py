@@ -30,9 +30,11 @@ class TrackSessions(threading.Thread):
         while True:
             if self._stop_event.is_set():
                 break
+            
             registered_sessions = DATABASE.get_sessions()
             current_hour = hour()
             current_day = today()
+            
             for session in registered_sessions:
                 session_id = session[0]
                 session_date = session[1].split("-")
