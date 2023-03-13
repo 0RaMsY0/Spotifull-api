@@ -5,6 +5,7 @@ from pytube import Search, YouTube
 
 from models.music_model import Music
 from utils.read_secret import *
+from utils.random_id import random_id
 
 def search_music(music_name: str):
     """
@@ -57,17 +58,17 @@ def download_music(youtube_url: Music, session_id: str) -> str:
     local_music_path = None
 
     youtube = YouTube(youtube_url)
-    
+    music_id = random_id(20)
+
     if "data" not in os.listdir("."):
         os.mkdir("data")
     
     for _ in range(max_retries):
         try:
-            youtube.streams.get_audio_only().download(output_path=f"data/{session_id}", filename=f"{youtube.title.replace(' ', '_')}.mp3")
-            local_music_path = f"/api/v1/get_music?music_name={youtube.title.replace(' ','_')}.mp3&session_id={session_id}"
+            youtube.streams.get_audio_only().download(output_path=f"data/{session_id}", filename=f"{music_id}.mp3")
+            local_music_path = f"/api/v1/get_music?music_name={music_id}&session_id={session_id}"
             break
         except Exception:
             time.sleep(delay)
 
     return local_music_path
-

@@ -1,7 +1,7 @@
 import random
 import string
 
-def random_id():
+def random_id(length: int) -> str:
     """
         return a random string id
     """
@@ -12,7 +12,7 @@ def random_id():
     ALPHABET = string.ascii_lowercase + string.ascii_uppercase
 
     while True:
-        for i in range(10):
+        for i in range(length):
             ID += random.choice(ALPHABET)
         if ID not in USED_IDS:
             break

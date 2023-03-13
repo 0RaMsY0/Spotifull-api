@@ -52,7 +52,7 @@ def playlist_info(playlist_url: str):
     global SPOTIFY_SESSION
 
     api_config = read_api_config()
-    session_id = random_id(); DATABASE.add_session(session_id)
+    session_id = random_id(10); DATABASE.add_session(session_id)
     playlist_data = fetch_playlist_music_url(playlist_url, session_id, SPOTIFY_SESSION, api_config["enable_local_download"])
 
     return {
@@ -63,15 +63,15 @@ def playlist_info(playlist_url: str):
 
 # read/download music
 @app.get("/api/v1/get_music")
-def get_music(music_name: str, session_id: str):
+def get_music(music_id: str, session_id: str):
     if session_id not in os.listdir("data"):
         return {
             "status_code": 404,
             "error message": "session_id not found",
         }
-    if music_name in os.listdir(f"data/{session_id}"):
+    if music_id in [i.replace(".mp3", "") for i in os.listdir(f"data/{session_id}")]:
         def iter_file():
-            with open(f"data/{session_id}/{music_name}", "rb") as req_music:
+            with open(f"data/{session_id}/{music_id}.mp3", "rb") as req_music:
                 yield from req_music
         return StreamingResponse(iter_file(), media_type="audio/mp3")
     else:
