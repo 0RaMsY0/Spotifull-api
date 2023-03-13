@@ -57,7 +57,10 @@ def download_music(youtube_url: Music, session_id: str) -> str:
     local_music_path = None
 
     youtube = YouTube(youtube_url)
-
+    
+    if "data" not in os.listdir("."):
+        os.mkdir("data")
+    
     for _ in range(max_retries):
         try:
             youtube.streams.get_audio_only().download(output_path=f"data/{session_id}", filename=f"{youtube.title.replace(' ', '_')}.mp3")
