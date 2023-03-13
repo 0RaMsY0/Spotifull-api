@@ -127,6 +127,9 @@ spotifull-cli.py is indepandent that means if you are on linux you can make it a
 chmod 777 spotifull-cli.py
 sudo mv spotifull-cli /usr/bin/spotifull-cli
 ```
+# CLI preview
+
+[spotifull-cli](https://github.com/0RaMsY0/Spotifull-api/blob/main/assets/images/cli-test.png?raw=true)
 
 # Upcoming features
 
