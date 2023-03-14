@@ -135,7 +135,7 @@ sudo mv spotifull-cli /usr/bin/spotifull-cli
 
 # Upcoming features
 
-* Costum logging
+* Costum logging ✅ 
 * Detect spaming and blocking them
 * Improve the search on youtube feature to get better result
 
