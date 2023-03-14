@@ -2,12 +2,10 @@
 
 import os
 import sys
-import time
 import json
 import argparse
 import colorama
 import requests
-import threading
 
 from pytube import YouTube, exceptions
 
