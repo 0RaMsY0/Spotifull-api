@@ -147,6 +147,7 @@ sudo mv spotifull-cli /usr/bin/spotifull-cli
 | /api/v1 | home route for the api | None |
 | /api/v1/get_playlist | fetch a spotify playlist data | music_id |
 | /api/v1/get_music | get a music that is already installed when calling ```/api/v1/get_playlist``` | music_id<br>session_id|
+| /api/v1/server.log | returns the server/api log| None|
 
 # Contributors ✨
 Thanks go to these wonderful people
