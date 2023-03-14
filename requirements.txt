@@ -2,3 +2,4 @@ fastapi
 uvicorn
 git+https://github.com/rgryta/pytube.git@main
 spotipy
+loguru
