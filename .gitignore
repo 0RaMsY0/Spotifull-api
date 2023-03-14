@@ -13,5 +13,8 @@ data/*
 # Ignore database changes
 database/database.db
 
+# Ignore api logs
+logs/server.log
+
 # Ignore media
 *.mp3
